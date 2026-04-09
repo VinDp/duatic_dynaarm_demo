@@ -87,7 +87,7 @@ def launch_setup(context, *args, **kwargs):
 
     nodes_to_start = [
         dynaarm_bringup,
-        rviz,
+        #rviz,
         joy_node,
     ]
 
