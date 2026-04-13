@@ -22,6 +22,10 @@
         type: joint_trajectory_controller/JointTrajectoryController
         state: inactive
 
+      cartesian_pose_controller:
+        type: duatic_dynaarm_controllers/CartesianPoseController
+        state: inactive
+
       freeze_controller:
         type: duatic_dynaarm_controllers/FreezeController
         state: active
@@ -117,3 +121,19 @@
   ros__parameters:
     names:
       - DynaarmSystem
+
+/**/cartesian_pose_controller:
+  ros__parameters:
+    joints:
+      - shoulder_rotation
+      - shoulder_flexion
+      - elbow_flexion
+      - forearm_rotation
+      - wrist_flexion
+      - wrist_rotation
+    command_interfaces:
+      - position
+      - velocity
+      - acceleration_commanded
+    srdf: <srdf>
+    end_effector_frame: "flange"

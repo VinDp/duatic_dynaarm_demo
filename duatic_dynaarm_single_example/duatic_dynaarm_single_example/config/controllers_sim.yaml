@@ -10,6 +10,10 @@
         type: joint_trajectory_controller/JointTrajectoryController
         state: active
 
+      cartesian_pose_controller:
+        type: duatic_dynaarm_controllers/CartesianPoseController
+        state: inactive
+
 /**/joint_state_broadcaster:
   ros__parameters:
     use_urdf_to_filter: false
@@ -49,3 +53,19 @@
       forearm_rotation: { trajectory: 0.5, goal: 0.05 }
       wrist_flexion: { trajectory: 0.5, goal: 0.05 }
       wrist_rotation: { trajectory: 0.5, goal: 0.05 }
+
+/**/cartesian_pose_controller:
+  ros__parameters:
+    joints:
+      - shoulder_rotation
+      - shoulder_flexion
+      - elbow_flexion
+      - forearm_rotation
+      - wrist_flexion
+      - wrist_rotation
+    command_interfaces:
+      - position
+      - velocity
+      - acceleration_commanded
+    srdf: ""
+    end_effector_frame: "flange"
