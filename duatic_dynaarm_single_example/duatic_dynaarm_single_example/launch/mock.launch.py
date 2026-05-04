@@ -41,17 +41,12 @@ def launch_setup(context, *args, **kwargs):
     pkg_dynaarm_bringup = FindPackageShare("duatic_dynaarm_bringup")
     pkg_dynaarm_description = FindPackageShare("duatic_dynaarm_description")
 
-
-    #FindPackageShare("duatic_dynaarm_single_example_description"),
-    #"urdf",
-    #"dynaarm_single_example.urdf.xacro",
-
     # Use the actual description of this package !
     pkg_dynaarm_single_arm_example_description = PathJoinSubstitution(
         [
-            FindPackageShare("dynaarm_evaluation_description"),
+            FindPackageShare(LaunchConfiguration("description_package")),
             "urdf",
-            "dynaarm_robotiq_hande.urdf.xacro",
+            LaunchConfiguration("description_urdf"),
         ]
     )
 
@@ -64,6 +59,7 @@ def launch_setup(context, *args, **kwargs):
             "namespace": LaunchConfiguration("namespace"),
             "urdf_file_path": pkg_dynaarm_single_arm_example_description,
             "controllers_config": LaunchConfiguration("controllers_config"),
+            "use_fake_hardware": LaunchConfiguration("use_fake_hardware"),
         }.items(),
     )
 
@@ -111,6 +107,21 @@ def generate_launch_description():
             "start_rviz",
             default_value="true",
             description="Start RViz2 automatically with this launch file.",
+        ),
+        DeclareLaunchArgument(
+            "description_package",
+            default_value="dynaarm_evaluation_description",
+            description="The package containing the robot description.",
+        ),
+        DeclareLaunchArgument(
+            "description_urdf",
+            default_value="dynaarm_robotiq_hande.urdf.xacro",
+            description="The URDF file name for the robot description.",
+        ),
+        DeclareLaunchArgument(
+            "use_fake_hardware",
+            default_value="true",
+            description="Use fake hardware for xacro simulation.",
         ),
     ]
 
