@@ -43,11 +43,19 @@ def launch_setup(context, *args, **kwargs):
     pkg_dynaarm_description = FindPackageShare("duatic_dynaarm_description")
 
     # Use the actual description of this package !
+    # pkg_dynaarm_single_arm_example_description = PathJoinSubstitution(
+    #     [
+    #         FindPackageShare("duatic_dynaarm_single_example_description"),
+    #         "urdf",
+    #         "dynaarm_single_example.urdf.xacro",
+    #     ]
+    # )
+
     pkg_dynaarm_single_arm_example_description = PathJoinSubstitution(
         [
-            FindPackageShare("duatic_dynaarm_single_example_description"),
+            FindPackageShare("dynaarm_evaluation_description"),
             "urdf",
-            "dynaarm_single_example.urdf.xacro",
+            "dynaarm_robotiq_hande.urdf.xacro",
         ]
     )
 
