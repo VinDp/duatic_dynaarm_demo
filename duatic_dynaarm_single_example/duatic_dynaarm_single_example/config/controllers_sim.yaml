@@ -10,6 +10,10 @@
         type: joint_trajectory_controller/JointTrajectoryController
         state: active
 
+      pid_controller:
+        type: pid_controller/PidController
+        state: inactive
+
 /**/joint_state_broadcaster:
   ros__parameters:
     use_urdf_to_filter: false
@@ -49,3 +53,49 @@
       forearm_rotation: { trajectory: 0.5, goal: 0.05 }
       wrist_flexion: { trajectory: 0.5, goal: 0.05 }
       wrist_rotation: { trajectory: 0.5, goal: 0.05 }
+
+/**/pid_controller:
+  ros__parameters:
+
+    dof_names:
+      - shoulder_rotation
+      - shoulder_flexion
+      - elbow_flexion
+      - forearm_rotation
+      - wrist_flexion
+      - wrist_rotation
+
+    command_interface: position
+
+    reference_and_state_interfaces:
+      - position
+      - velocity
+
+    use_external_measured_states: false
+
+    gains:
+      shoulder_rotation:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #5.0
+        feedforward_gain: 0.0
+      shoulder_flexion:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #5.0
+      elbow_flexion:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #5.0
+      forearm_rotation:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #3.0
+      wrist_flexion:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #2.0
+      wrist_rotation:
+        p: 0.1
+        i: 0.0
+        d: 0.0 #2.0

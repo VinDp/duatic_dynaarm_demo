@@ -30,9 +30,9 @@
         type: duatic_dynaarm_controllers/ForceTorqueBroadcaster
         state: active
 
-      # pid_controller:
-      #   type: pid_controller/PidController
-      #   state: inactive
+      pid_controller:
+        type: pid_controller/PidController
+        state: inactive
 
       gripper_action_controller:
         type: parallel_gripper_action_controller/GripperActionController
@@ -146,49 +146,49 @@
       - position
       - velocity
 
-# /**/pid_controller:
-#   ros__parameters:
+/**/pid_controller:
+  ros__parameters:
 
-#     dof_names:
-#       - shoulder_rotation
-#       - shoulder_flexion
-#       - elbow_flexion
-#       - forearm_rotation
-#       - wrist_flexion
-#       - wrist_rotation
+    dof_names:
+      - shoulder_rotation
+      - shoulder_flexion
+      - elbow_flexion
+      - forearm_rotation
+      - wrist_flexion
+      - wrist_rotation
 
-#     command_interface: position
+    command_interface: position
 
-#     reference_and_state_interfaces:
-#       - position
-#       - velocity   # optional but recommended
+    reference_and_state_interfaces:
+      - position
+      - velocity   # optional but recommended
 
-#     use_external_measured_states: false
+    use_external_measured_states: false
 
-#     gains:
-#       shoulder_rotation:
-#         p: 0.1 #50.0
-#         i: 0.0
-#         d: 5.0
-#         feedforward_gain: 0.0
-#       shoulder_flexion:
-#         p: 0.1 #50.0
-#         i: 0.0
-#         d: 5.0
-#       elbow_flexion:
-#         p: 0.1 #50.0
-#         i: 0.0
-#         d: 5.0
-#       forearm_rotation:
-#         p: 0.1 #30.0
-#         i: 0.0
-#         d: 3.0
-#       wrist_flexion:
-#         p: 0.1 #20.0
-#         i: 0.0
-#         d: 2.0
-#       wrist_rotation:
-#         p: 0.1 #20.0
-#         i: 0.0
-#         d: 2.0
+    gains:
+      shoulder_rotation:
+        p: 0.1 #50.0
+        i: 0.0
+        d: 5.0
+        feedforward_gain: 0.0
+      shoulder_flexion:
+        p: 0.1 #50.0
+        i: 0.0
+        d: 5.0
+      elbow_flexion:
+        p: 0.1 #50.0
+        i: 0.0
+        d: 5.0
+      forearm_rotation:
+        p: 0.1 #30.0
+        i: 0.0
+        d: 3.0
+      wrist_flexion:
+        p: 0.1 #20.0
+        i: 0.0
+        d: 2.0
+      wrist_rotation:
+        p: 0.1 #20.0
+        i: 0.0
+        d: 2.0
 

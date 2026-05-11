@@ -86,6 +86,7 @@ def launch_setup(context, *args, **kwargs):
         ),
         launch_arguments={
             "world": LaunchConfiguration("world"),
+            "headless": LaunchConfiguration("headless"),
         }.items(),
         condition=IfCondition(
             PythonExpression(["'", LaunchConfiguration("simulator"), "' == 'gazebo'"])
@@ -130,6 +131,12 @@ def generate_launch_description():
             default_value="",
         ),
         DeclareLaunchArgument(name="world", default_value="duatic_empty", description="World name"),
+        DeclareLaunchArgument(
+            "headless",
+            default_value="false",
+            choices=["false", "true"],
+            description="Run Gazebo without a GUI",
+        ),
         DeclareLaunchArgument(
             name="simulator",
             default_value="gazebo",
